@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contador Simples</title>
+
+  <style>
+    /* Apenas deixamos a página bonitinha */
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      padding: 20px;
+    }
+
+    /* A caixinha branca onde tudo fica */
+    .caixa {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      max-width: 600px;
+      margin: auto;
+    }
+
+    /* Onde o usuário vai digitar o texto */
+    textarea {
+      width: 100%;
+      height: 150px;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      resize: none;
+    }
+
+    /* Área onde mostramos o resultado */
+    .resultado {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="caixa">
+  <h2>Contador de Texto</h2>
+
+  <!-- Linha Principal 1: A caixa onde a pessoa digita -->
+  <textarea id="bloco" placeholder="Escreva algo aqui..."></textarea>
+
+  <div class="resultado">
+    <!-- Linha Principal 2: Onde mostramos a quantidade de letras -->
+    <p id="letras">Letras: 0</p>
+
+    <!-- Linha Principal 3: Onde mostramos a quantidade de palavras -->
+    <p id="palavras">Palavras: 0</p>
+  </div>
+</div>
+
+<script>
+
+  // Linha Principal 4: Pegamos a caixa de texto
+  const bloco = document.getElementById("bloco");
+
+  // Linha Principal 5: Pegamos onde vamos mostrar as letras
+  const letras = document.getElementById("letras");
+
+  // Linha Principal 6: Pegamos onde vamos mostrar as palavras
+  const palavras = document.getElementById("palavras");
+
+
+  // Linha Principal 7: Sempre que alguém digitar algo, essa função roda
+  bloco.addEventListener("input", function() {
+
+    // Linha Principal 8: Pegamos exatamente o que a pessoa digitou
+    let txt = bloco.value;
+
+    // Linha Principal 9: Contamos as letras (cada caractere conta)
+    let qtdLetras = txt.length;
+
+    /* 
+      Linha Principal 10:
+      Contamos as palavras.
+      • trim() tira espaços inúteis
+      • split(/\s+/) divide por qualquer espaço
+      • filter(...) remove itens vazios
+    */
+    let qtdPalavras = txt.trim().split(/\s+/).filter(x => x.length > 0).length;
+
+    // Linha Principal 11: Atualizamos o texto na tela
+    letras.textContent = "Letras: " + qtdLetras;
+
+    // Linha Principal 12: Atualizamos as palavras na tela
+    palavras.textContent = "Palavras: " + qtdPalavras;
+  });
+
+</script>
+
+</body>
+</html>
